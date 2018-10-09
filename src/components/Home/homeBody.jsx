@@ -8,9 +8,29 @@ class HomeBody extends Component {
     super(props);
     this.state = {
       items: [],
-      isLoaded: false
+      isLoaded: false,
+      initialItems: [],
+      filteredItems: []
     };
   }
+
+  componentWillMount() {
+    this.setState({ items: this.state.initialItems });
+  }
+
+  HandleChange = event => {
+    var updatedList = this.state.items;
+    updatedList = updatedList.filter(function(item) {
+      return (
+        item.name
+          .toString()
+          .toLowerCase()
+          .search(event.target.value.toString().toLowerCase()) !== -1
+      );
+    });
+    console.log(updatedList);
+    this.setState({ filteredItems: updatedList });
+  };
 
   componentDidMount() {
     fetch("http://127.0.0.1:9008/api/stylists/")
@@ -26,7 +46,8 @@ class HomeBody extends Component {
   render() {
     return (
       <div>
-        {this.state.items.map(item => (
+        <PrimarySearch HandleChange={this.HandleChange} />
+        {this.state.filteredItems.map(item => (
           <AdBox
             key={item.id}
             userName={item.name}
