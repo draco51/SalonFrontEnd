@@ -2,29 +2,32 @@ import React, { Component } from "react";
 import "./primarySearch.css";
 
 class PrimarySearch extends Component {
+  constructor(props) {
+    super(props);
+  }
   state = {};
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <br />
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-10 col-lg-8">
-            <form action="http://127.0.0.1:9008/api/stylists" method="POST">
-              <div class="card-body row no-gutters align-items-center">
-                <div class="col-auto">
-                  <i class="fas fa-search h4 text-body" />
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-10 col-lg-8">
+            <form onSubmit={this.props.getUser}>
+              <div className="card-body row no-gutters align-items-center">
+                <div className="col-auto">
+                  <i className="fas fa-search h4 text-body" />
                 </div>
-                <div class="col">
+                <div className="col">
                   <input
-                    class="form-control form-control-lg form-control-borderless"
-                    type="search"
-                    name="name"
+                    className="form-control form-control-lg form-control-borderless"
+                    type="text"
+                    name="userName"
                     placeholder="Search topics or keywords"
                   />
                 </div>
                 {"   "}
-                <div class="col-auto">
-                  <button class="btn btn-lg btn-success" type="submit">
+                <div className="col-auto">
+                  <button className="btn btn-lg btn-success" type="submit">
                     Search
                   </button>
                 </div>

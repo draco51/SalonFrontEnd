@@ -4,55 +4,41 @@ import Header from "./../main/header";
 import HomeCover from "./../main/home-cover";
 import Footer from "./../main/footer";
 import HomeBody from "./homeBody";
+import PrimarySearch from "./../Search/primarySearch";
+import StatCover from "./statCover";
+import axios from "axios";
+//api.github.com/users/
 
 import "./Home.css";
 
 class Home extends Component {
-  state = { subtitle: "The Best Marketplace to Find and Hire Hair Stylist" };
+  getUser = e => {
+    e.preventDefault();
+    const userName = e.target.elements.userName.value;
+    axios.get(`https://api.github.com/users/${userName}`).then(res => {
+      console.log(res);
+      const repos = res.data.public_repos;
+      this.setState({ repos });
+    });
+  };
+
+  state = {
+    subtitle: "The Best Marketplace to Find and Hire Hair Stylist",
+    repos: null
+  };
+
   render() {
     return (
       <div container>
         <Header />
         <HomeCover subtitle={this.state.subtitle} />
-        <div className="coverContent">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-4">
-                {" "}
-                <img
-                  src="https://image.flaticon.com/icons/svg/12/12195.svg"
-                  width="100px"
-                  height="100px"
-                />
-                <br />
-                <br />
-                <h6>Best Rated</h6>
-              </div>
-              <div className="col-md-4">
-                <img
-                  src="https://image.flaticon.com/icons/svg/13/13957.svg"
-                  width="100px"
-                  height="100px"
-                />
-                <br />
-                <br />
-                <h6>400+ Members</h6>
-              </div>
-              <div className="col-md-4">
-                {" "}
-                <img
-                  src="https://image.flaticon.com/icons/svg/3/3596.svg"
-                  width="100px"
-                  height="100px"
-                />
-                <br />
-                <br />
-                <h6>50 Jobs Completed</h6>
-              </div>
-            </div>
-          </div>{" "}
-        </div>
-        <hr />
+        <StatCover />
+        <PrimarySearch getUser={this.getUser} />
+        {this.state.repos ? (
+          <p>No : {this.state.repos}</p>
+        ) : (
+          <p>Please enter a user name</p>
+        )}
         <HomeBody />
         <Footer />
       </div>
