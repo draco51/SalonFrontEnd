@@ -12,19 +12,23 @@ import axios from "axios";
 import "./Home.css";
 
 class Home extends Component {
-  getUser = e => {
-    e.preventDefault();
-    const userName = e.target.elements.userName.value;
-    axios.get(`https://api.github.com/users/${userName}`).then(res => {
-      console.log(res);
-      const repos = res.data.public_repos;
-      this.setState({ repos });
-    });
-  };
+  // searchHandler = e => {
+  //   this.setState({ term: e.target.value });
+  // };
+
+  // getUser = e => {
+  //   e.preventDefault();
+  //   const userName = e.target.elements.userName.value;
+  //   axios.get(`https://api.github.com/users/${userName}`).then(res => {
+  //     console.log(res);
+  //     const repos = res.data.public_repos;
+  //     this.setState({ repos });
+  //   });
+  // };
 
   state = {
-    subtitle: "The Best Marketplace to Find and Hire Hair Stylist",
-    repos: null
+    subtitle: "The Best Marketplace to Find and Hire Hair Stylist"
+    // repos: null
   };
 
   render() {
@@ -33,12 +37,12 @@ class Home extends Component {
         <Header />
         <HomeCover subtitle={this.state.subtitle} />
         <StatCover />
-        <PrimarySearch getUser={this.getUser} />
-        {this.state.repos ? (
+        {/* <PrimarySearch searchHandler={this.searchHandler} /> */}
+        {/* {this.state.repos ? (
           <p>No : {this.state.repos}</p>
         ) : (
           <p>Please enter a user name</p>
-        )}
+        )} */}
         <HomeBody />
         <Footer />
       </div>

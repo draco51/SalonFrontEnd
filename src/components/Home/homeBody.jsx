@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import AdBox from "./../AdBox/AdBox";
-import { FaBeer } from "react-icons/fa";
 import PrimarySearch from "./../Search/primarySearch";
 
 class HomeBody extends Component {
@@ -8,7 +7,8 @@ class HomeBody extends Component {
     super(props);
     this.state = {
       items: [],
-      isLoaded: false
+      isLoaded: false,
+      term: ""
     };
   }
 
@@ -26,6 +26,7 @@ class HomeBody extends Component {
   render() {
     return (
       <div>
+        <PrimarySearch />
         {this.state.items.map(item => (
           <AdBox
             key={item.id}
