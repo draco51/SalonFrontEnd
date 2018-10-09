@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AdBox from "./../AdBox/AdBox";
 import { FaBeer } from "react-icons/fa";
+import PrimarySearch from "./../Search/primarySearch";
 
 class HomeBody extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class HomeBody extends Component {
             description={item.description}
             location={item.location}
             propicURL={item.propicURL}
+            profileURL={item.id}
           />
         ))}
       </div>
@@ -41,22 +43,3 @@ class HomeBody extends Component {
 }
 
 export default HomeBody;
-
-{
-  /* <div className="Adbox">
-        <ul>
-          {this.state.items.map(item => (
-            <li key={item.id}>Name: {item.name}</li>
-          ))}
-          ;
-        </ul>
-      </div> */
-}
-
-{
-  /* <div>
-        {this.state.items.map(item => (
-          <Adbox key={item.id} user_name={item.name} />
-        ))}
-      </div> */
-}

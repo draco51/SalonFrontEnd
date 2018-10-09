@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./../Home/Home.css";
+import PrimarySearch from "./../Search/primarySearch";
 
 class HomeCover extends Component {
   state = {};
@@ -9,6 +10,7 @@ class HomeCover extends Component {
         <div className="container">
           <h1 className="display-4">Welcome</h1>
           <p className="lead">{this.props.subtitle}</p>
+          <PrimarySearch />
         </div>
       </div>
     );

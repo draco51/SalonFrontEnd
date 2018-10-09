@@ -41,7 +41,10 @@ class AdBox extends Component {
             <div className="display-4">{this.props.Tagline}</div>
             <hr />
             <p>{this.props.description}</p>
-            <a className="btn btn-primary float-right" href="#">
+            <a
+              className="btn btn-primary float-right"
+              href={this.props.profileURL}
+            >
               View More
             </a>
           </div>

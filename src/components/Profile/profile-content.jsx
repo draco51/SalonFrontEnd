@@ -5,33 +5,33 @@ class ProfileContent extends Component {
   state = {};
   render() {
     return (
-      <div class="container-fluid">
+      <div className="container-fluid">
         <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
               <a href="#">Home</a>
             </li>
-            <li class="breadcrumb-item">
+            <li className="breadcrumb-item">
               <a href="#">Users</a>
             </li>
-            <li class="breadcrumb-item active">Username</li>
+            <li className="breadcrumb-item active">Username</li>
           </ol>
         </nav>
-        <div class="row">
-          <div class="col-md-3 text-center">
+        <div className="row">
+          <div className="col-md-3 text-center">
             <div>
               <img
                 alt="Bootstrap Image Preview"
                 src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg"
-                class="rounded-circle"
+                className="rounded-circle"
               />
             </div>
             <br />
 
-            <h6 class="text-center">Name Naame</h6>
+            <h6 className="text-center">Name Naame</h6>
 
-            <span class="glyphicon glyphicon-envelope" />
-            <h6 class="text-center">Location</h6>
+            <span className="glyphicon glyphicon-envelope" />
+            <h6 className="text-center">Location</h6>
             <hr />
             <span className="col-md-3 text-left">
               <h6>Skills</h6>
@@ -52,7 +52,7 @@ class ProfileContent extends Component {
               </ul>
             </span>
           </div>
-          <div class="col-md-9">
+          <div className="col-md-9">
             <h2>Profile Title / Tagline</h2>
             <p>
               Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
@@ -69,24 +69,24 @@ class ProfileContent extends Component {
             <span className="col-md-9 text-left">
               <h6>Portfolio</h6>
             </span>
-            <div class="carousel slide" id="carousel-765614">
-              <ol class="carousel-indicators">
+            <div className="carousel slide" id="carousel-765614">
+              <ol className="carousel-indicators">
                 <li
                   data-slide-to="0"
                   data-target="#carousel-765614"
-                  class="active"
+                  className="active"
                 />
                 <li data-slide-to="1" data-target="#carousel-765614" />
                 <li data-slide-to="2" data-target="#carousel-765614" />
               </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
+              <div className="carousel-inner">
+                <div className="carousel-item active">
                   <img
-                    class="d-block w-100"
+                    className="d-block w-100"
                     alt="Carousel Bootstrap First"
                     src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg"
                   />
-                  <div class="carousel-caption">
+                  <div className="carousel-caption">
                     <h4>First Thumbnail label</h4>
                     <p>
                       Cras justo odio, dapibus ac facilisis in, egestas eget
@@ -95,7 +95,7 @@ class ProfileContent extends Component {
                     </p>
                   </div>
                 </div>
-                <div class="carousel-item">
+                <div className="carousel-item">
                   <img
                     class="d-block w-100"
                     alt="Carousel Bootstrap Second"
