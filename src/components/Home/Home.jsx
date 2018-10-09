@@ -15,9 +15,9 @@ class Home extends Component {
         <Header />
         <HomeCover subtitle={this.state.subtitle} />
         <div className="coverContent">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-4">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-4">
                 {" "}
                 <img
                   src="https://image.flaticon.com/icons/svg/12/12195.svg"
@@ -28,7 +28,7 @@ class Home extends Component {
                 <br />
                 <h6>Best Rated</h6>
               </div>
-              <div class="col-md-4">
+              <div className="col-md-4">
                 <img
                   src="https://image.flaticon.com/icons/svg/13/13957.svg"
                   width="100px"
@@ -38,7 +38,7 @@ class Home extends Component {
                 <br />
                 <h6>400+ Members</h6>
               </div>
-              <div class="col-md-4">
+              <div className="col-md-4">
                 {" "}
                 <img
                   src="https://image.flaticon.com/icons/svg/3/3596.svg"

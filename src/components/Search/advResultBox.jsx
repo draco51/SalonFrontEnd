@@ -1,16 +1,13 @@
 import React, { Component } from "react";
-import "./Adbox.css";
-import { AsyncSeriesHook } from "tapable";
-import { FaBeer } from "react-icons/fa";
+import "./AdvResultBox.css";
 
-class AdBox extends Component {
+class AdvResultBox extends Component {
   state = {
     userName: "Ishara Dhannjaya",
-    profileImg: "",
-    user_title: "Hair Coloring and Styling",
-    userDescription: "dasdadsa das das das d asd asads adsa "
+    location: "Colombo",
+    Tagline: "Hair Coloring and Styling",
+    description: "dasdadsa das das das d asd asads adsa "
   };
-
   render() {
     return (
       <div
@@ -21,26 +18,23 @@ class AdBox extends Component {
         <div className="row">
           <div className="col-md-3 text-center" style={{ borderRight: 20 }}>
             <img
-              src={this.props.propicURL}
+              src={this.state.propicURL}
               alt="profile picture"
               className="rounded-circle"
-              width="130px"
-              height="130px"
+              width="100px"
+              height="100px"
             />
             <br />
             <br />
             <p className="lead">
-              <div className="lable">{this.props.userName}</div>
-              <div className="lable">
-                <FaBeer />
-                {this.props.location}
-              </div>
+              <div className="lable">{this.state.userName}</div>
+              <div className="lable">{this.state.location}</div>
             </p>
           </div>
           <div className="col-md-9">
-            <div className="display-4">{this.props.Tagline}</div>
+            <div className="display-4">{this.state.Tagline}</div>
             <hr />
-            <p>{this.props.description}</p>
+            <p>{this.state.description}</p>
             <a className="btn btn-primary float-right" href="#">
               View More
             </a>
@@ -52,4 +46,4 @@ class AdBox extends Component {
   }
 }
 
-export default AdBox;
+export default AdvResultBox;

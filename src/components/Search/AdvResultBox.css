@@ -1,0 +1,15 @@
+.jumbotron-Adbox {
+  background-size: 100%;
+  background-position: center;
+}
+
+.container .btn-holder {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.row {
+  margin: 20px;
+  padding: 20px;
+  height: 250px;
+}
