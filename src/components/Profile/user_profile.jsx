@@ -45,7 +45,10 @@ class UserProfile extends Component {
       location,
       propicURL,
       hourRate,
-      skills
+      rating,
+      skills,
+      qualitifications,
+      pictures
     } = this.state.item;
 
     return (
@@ -54,17 +57,17 @@ class UserProfile extends Component {
         <div className="jumbotron bg-white ">
           <div className="container" style={{ height: 1200 }}>
             <ProfileContent
-              key={this.state.item.id}
-              userName={this.state.item.name}
-              tagline={this.state.item.profileTitle}
-              description={this.state.item.description}
-              location={this.state.item.location}
-              propicURL={this.state.item.propicURL}
-              hourlyRate={this.state.item.hourRate}
-              ratings={this.state.item.rating}
-              skillsObj={this.state.item.skills}
-              qualifcnObj={this.state.item.qualitifications}
-              images={this.state.item.pictures}
+              key={id}
+              userName={name}
+              tagline={profileTitle}
+              description={description}
+              location={location}
+              propicURL={propicURL}
+              hourlyRate={hourRate}
+              ratings={rating}
+              skillsObj={skills}
+              qualifcnObj={qualitifications}
+              images={pictures}
             />
           </div>
         </div>

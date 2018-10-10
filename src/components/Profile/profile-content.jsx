@@ -4,6 +4,7 @@ import MaterialIcon, { colorPalette } from "material-icons-react";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import Rating from "react-rating";
 
 class ProfileContent extends Component {
   state = {
@@ -21,8 +22,6 @@ class ProfileContent extends Component {
   }
 
   render() {
-    console.log(this.props.skillsObj);
-
     return (
       <div className="container-fluid">
         <nav>
@@ -87,6 +86,9 @@ class ProfileContent extends Component {
             </span>
           </div>
           <div className="col-md-9">
+            <div className>
+              <Rating placeholderRating="5" />
+            </div>
             <h2>{this.props.tagline}</h2>
             <p>{this.props.description}</p>
             <hr />
