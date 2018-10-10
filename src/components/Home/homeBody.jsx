@@ -9,7 +9,8 @@ class HomeBody extends Component {
       items: [],
       isLoaded: false,
       initialItems: [],
-      filteredItems: []
+      filteredItems: [],
+      proURL: ""
     };
   }
 
@@ -22,6 +23,14 @@ class HomeBody extends Component {
     updatedList = updatedList.filter(function(item) {
       return (
         item.name
+          .toString()
+          .toLowerCase()
+          .search(event.target.value.toString().toLowerCase()) !== -1 ||
+        item.location
+          .toString()
+          .toLowerCase()
+          .search(event.target.value.toString().toLowerCase()) !== -1 ||
+        item.profileTitle
           .toString()
           .toLowerCase()
           .search(event.target.value.toString().toLowerCase()) !== -1
@@ -46,17 +55,23 @@ class HomeBody extends Component {
     return (
       <div>
         <PrimarySearch HandleChange={this.HandleChange} />
-        {this.state.filteredItems.map(item => (
-          <AdBox
-            key={item.id}
-            userName={item.name}
-            Tagline={item.profileTitle}
-            description={item.description}
-            location={item.location}
-            propicURL={item.propicURL}
-            profileURL={item.id}
-          />
-        ))}
+        {this.state.filteredItems ? (
+          <div>
+            {this.state.filteredItems.map(item => (
+              <AdBox
+                key={item.id}
+                userName={item.name}
+                Tagline={item.profileTitle}
+                description={item.description}
+                location={item.location}
+                propicURL={item.propicURL}
+                profileURL={"http://localhost:3000/users/stylists/" + item.id}
+              />
+            ))}
+          </div>
+        ) : (
+          <PrimarySearch AlertMsg="No results found" />
+        )}
       </div>
     );
   }

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import Select from "react-select";
+import Select, { components } from "react-select";
+import CreatableSelect from "react-select/lib/Creatable";
+// import { colourOptions } from "../data";
 
 const options = [
   { value: "chocolate", label: "Chocolate" },
@@ -7,26 +9,27 @@ const options = [
   { value: "vanilla", label: "Vanilla" }
 ];
 
-class SearchFilters extends Component {
+class SearchFilters extends Component<*, State> {
   state = {
     selectedOption: null
   };
 
-  handleChange = selectedOption => {
-    this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
+  handleChange = (newValue: any, actionMeta: any) => {
+    console.group("Value Changed");
+    console.log(newValue);
+    console.log(`action: ${actionMeta.action}`);
+    console.groupEnd();
   };
 
   render() {
     const { selectedOption } = this.state;
     return (
-      <Select
-        value={selectedOption}
+      <CreatableSelect
+        isMulti
         onChange={this.handleChange}
-        options={options}
+        // options={colourOptions}
       />
     );
   }
 }
-
 export default SearchFilters;

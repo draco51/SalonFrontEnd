@@ -22,7 +22,7 @@ class PrimarySearch extends Component {
                     className="form-control form-control-lg form-control-borderless"
                     type="text"
                     name="userName"
-                    placeholder="Search topics or keywords"
+                    placeholder="Search names, topics or keywords"
                     onChange={this.props.HandleChange}
                   />
                 </div>
@@ -34,6 +34,7 @@ class PrimarySearch extends Component {
                 </div>
               </div>
             </form>
+            <p>{this.props.AlertMsg}</p>
           </div>
         </div>
       </div>
