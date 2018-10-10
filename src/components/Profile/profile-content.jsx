@@ -86,8 +86,12 @@ class ProfileContent extends Component {
             </span>
           </div>
           <div className="col-md-9">
-            <div className>
-              <Rating placeholderRating="5" />
+            <div className="container text-right">
+              <Rating
+                placeholderRating={this.props.rating}
+                readonly="true"
+                direction="rtl"
+              />
             </div>
             <h2>{this.props.tagline}</h2>
             <p>{this.props.description}</p>

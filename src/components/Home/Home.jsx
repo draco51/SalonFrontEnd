@@ -22,16 +22,6 @@ class Home extends Component {
   //   });
   // };
 
-  // getUser = e => {
-  //   e.preventDefault();
-  //   const userName = e.target.elements.userName.value;
-  //   axios.get(`https://api.github.com/users/${userName}`).then(res => {
-  //     console.log(res);
-  //     const repos = res.data.public_repos;
-  //     this.setState({ repos });
-  //   });
-  // };
-
   state = {
     subtitle: "The Best Marketplace to Find and Hire Hair Stylist"
     // repos: null

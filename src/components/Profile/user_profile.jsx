@@ -64,7 +64,7 @@ class UserProfile extends Component {
               location={location}
               propicURL={propicURL}
               hourlyRate={hourRate}
-              ratings={rating}
+              rating={rating}
               skillsObj={skills}
               qualifcnObj={qualitifications}
               images={pictures}
