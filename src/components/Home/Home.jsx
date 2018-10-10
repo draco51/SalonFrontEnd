@@ -12,8 +12,14 @@ import axios from "axios";
 import "./Home.css";
 
 class Home extends Component {
-  // searchHandler = e => {
-  //   this.setState({ term: e.target.value });
+  // getUser = e => {
+  //   e.preventDefault();
+  //   const userName = e.target.elements.userName.value;
+  //   axios.get(`https://api.github.com/users/${userName}`).then(res => {
+  //     console.log(res);
+  //     const repos = res.data.public_repos;
+  //     this.setState({ repos });
+  //   });
   // };
 
   // getUser = e => {
@@ -33,11 +39,11 @@ class Home extends Component {
 
   render() {
     return (
-      <div container>
+      <div>
         <Header />
         <HomeCover subtitle={this.state.subtitle} />
         <StatCover />
-        {/* <PrimarySearch searchHandler={this.searchHandler} /> */}
+        {/* <PrimarySearch getUser={this.getUser} /> */}
         {/* {this.state.repos ? (
           <p>No : {this.state.repos}</p>
         ) : (

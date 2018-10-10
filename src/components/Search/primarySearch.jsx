@@ -23,6 +23,7 @@ class PrimarySearch extends Component {
                     type="text"
                     name="userName"
                     placeholder="Search topics or keywords"
+                    onChange={this.props.HandleChange}
                   />
                 </div>
                 {"   "}

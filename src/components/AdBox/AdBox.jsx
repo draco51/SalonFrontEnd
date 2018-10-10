@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Adbox.css";
 import { AsyncSeriesHook } from "tapable";
 import { FaBeer } from "react-icons/fa";
+import MaterialIcon, { colorPalette } from "material-icons-react";
 
 class AdBox extends Component {
   state = {
@@ -19,7 +20,7 @@ class AdBox extends Component {
       >
         {/* <div className="jumbotron-Adbox"> */}
         <div className="row">
-          <div className="col-md-3 text-center" style={{ borderRight: 20 }}>
+          <div className="col-md-3 text-center">
             <img
               src={this.props.propicURL}
               alt="profile picture"
@@ -30,10 +31,13 @@ class AdBox extends Component {
             <br />
             <br />
             <p className="lead">
-              <div className="lable">{this.props.userName}</div>
               <div className="lable">
-                <FaBeer />
-                {this.props.location}
+                <MaterialIcon icon="account_circle" />
+                 {this.props.userName}
+              </div>
+              <div className="lable">
+                <MaterialIcon icon="location_on" />
+                 {this.props.location}
               </div>
             </p>
           </div>
