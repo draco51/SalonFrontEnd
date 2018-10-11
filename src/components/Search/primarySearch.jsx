@@ -28,9 +28,13 @@ class PrimarySearch extends Component {
                 </div>
                 {"   "}
                 <div className="col-auto">
-                  <button className="btn btn-lg btn-success" type="submit">
+                  <a
+                    className="btn btn-lg btn-success"
+                    placeholder="Search"
+                    href="http://localhost:3000/Search"
+                  >
                     Search
-                  </button>
+                  </a>
                 </div>
               </div>
             </form>

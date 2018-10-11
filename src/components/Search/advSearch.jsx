@@ -9,7 +9,7 @@ class adSearch extends Component {
     return (
       <div>
         <Header />
-        <div className="container" style={{ height: 3000 }}>
+        <div className="container">
           <AdvSearchBody />
         </div>
         <Footer />
