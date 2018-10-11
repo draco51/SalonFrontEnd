@@ -10,6 +10,7 @@ class UserProfile extends Component {
     pictures: []
   };
 
+  //Fetching freelancer profile data from API
   componentDidMount() {
     const encodedValue = encodeURIComponent(this.props.match.params.id);
     fetch(`http://127.0.0.1:9008/api/stylists/${encodedValue}`)
@@ -22,18 +23,7 @@ class UserProfile extends Component {
       });
   }
 
-  // componentDidMount() {
-  //   const encodedValue = encodeURIComponent(this.props.match.params.id);
-  //   fetch(`http://127.0.0.1:9008/api/stylists/${encodedValue}`)
-  //     .then(results => {
-  //       return results.json();
-  //     })
-  //     .then(data => {
-  //       let pictures = data.results.map(pic => {
-  //         return <p key={pic.id}>s</p>;
-  //       });
-  //     });
-  // }
+  //Rendering Data
 
   render() {
     console.log(this.state.item);

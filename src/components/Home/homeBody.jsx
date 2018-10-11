@@ -18,7 +18,9 @@ class HomeBody extends Component {
     this.setState({ items: this.state.initialItems });
   }
 
+  //Search term input filtering
   HandleChange = event => {
+    console.log(event);
     var updatedList = this.state.items;
     updatedList = updatedList.filter(function(item) {
       return (
@@ -36,10 +38,11 @@ class HomeBody extends Component {
           .search(event.target.value.toString().toLowerCase()) !== -1
       );
     });
-    console.log(updatedList);
+    // console.log(updatedList);
     this.setState({ filteredItems: updatedList });
   };
 
+  //Fetching freelancer profiles from API
   componentDidMount() {
     fetch("http://127.0.0.1:9008/api/stylists/")
       .then(res => res.json())
@@ -51,6 +54,7 @@ class HomeBody extends Component {
       });
   }
 
+  //Rendering class
   render() {
     return (
       <div>

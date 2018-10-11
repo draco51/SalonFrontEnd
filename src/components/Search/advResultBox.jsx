@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import "./AdvResultBox.css";
+// import Rating from "react-rating"; // freelancer rating rendering element
+import StarRatingComponent from "react-star-rating-component";
 
 class AdvResultBox extends Component {
-  state = {
-    userName: "Ishara Dhannjaya",
-    location: "Colombo",
-    Tagline: "Hair Coloring and Styling",
-    description: "dasdadsa das das das d asd asads adsa "
-  };
+  state = {};
+
   render() {
     return (
       <div
@@ -16,7 +14,7 @@ class AdvResultBox extends Component {
       >
         {/* <div className="jumbotron-Adbox"> */}
         <div className="row">
-          <div className="col-md-3 text-center" style={{ borderRight: 20 }}>
+          <div className="col-sm-3 text-center" style={{ borderRight: 20 }}>
             <img
               src={this.props.propicURL}
               alt="profile picture"
@@ -32,6 +30,13 @@ class AdvResultBox extends Component {
             </p>
           </div>
           <div className="col-md-9">
+            <StarRatingComponent
+              name="rate2"
+              editing={false}
+              starCount={5}
+              value={this.props.rating}
+            />
+
             <div className="display-4">{this.props.Tagline}</div>
             <hr />
             <p>{this.props.description}</p>

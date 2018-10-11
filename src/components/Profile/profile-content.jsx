@@ -4,7 +4,7 @@ import MaterialIcon, { colorPalette } from "material-icons-react";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import Rating from "react-rating";
+import Rating from "react-rating"; // freelancer rating rendering element
 
 class ProfileContent extends Component {
   state = {
@@ -13,6 +13,7 @@ class ProfileContent extends Component {
     images: []
   };
 
+  //Fetching props data arrays from parent component user_profile
   static getDerivedStateFromProps(nextProps) {
     return {
       skills: nextProps.skillsObj ? nextProps.skillsObj : [],

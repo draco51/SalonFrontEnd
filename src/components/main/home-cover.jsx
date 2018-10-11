@@ -7,9 +7,12 @@ class HomeCover extends Component {
   render() {
     return (
       <div className="jumbotron-cover rounded-0">
+        <div className="container" />
         <div className="container">
-          <h1 className="display-4">Welcome</h1>
+          <h1 className="display-4">Welcome to ColorMe</h1>
+
           <p className="lead">{this.props.subtitle}</p>
+          <br />
           <a
             href="#"
             class="btn btn-primary btn-lg active"
