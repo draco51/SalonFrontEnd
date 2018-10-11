@@ -4,7 +4,9 @@ import SearchFilters from "./searchFilters";
 
 class advSearchBody extends Component {
   state = {
-    items: []
+    items: [],
+    filtereditems: [],
+    options: []
   };
   componentDidMount() {
     fetch("http://127.0.0.1:9008/api/stylists/")
@@ -18,13 +20,15 @@ class advSearchBody extends Component {
   }
 
   render() {
+    console.log(this.state.items);
+
     return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-2 text-center">
+          <div className="col-md-3 text-center">
             <SearchFilters />
           </div>
-          <div className="col-md-10">
+          <div className="col-md-9">
             {this.state.items ? (
               <React.Fragment>
                 {this.state.items.map(item => (

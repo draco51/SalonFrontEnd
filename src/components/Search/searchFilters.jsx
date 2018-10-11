@@ -24,11 +24,7 @@ class SearchFilters extends Component<*, State> {
   render() {
     const { selectedOption } = this.state;
     return (
-      <CreatableSelect
-        isMulti
-        onChange={this.handleChange}
-        // options={colourOptions}
-      />
+      <CreatableSelect isMulti onChange={this.handleChange} options={options} />
     );
   }
 }

@@ -15,7 +15,7 @@ class AdBox extends Component {
   render() {
     return (
       <div
-        className="container border "
+        className="container "
         style={{ marginBottom: 10, backgroundColor: "#e6e6e6" }}
       >
         {/* <div className="jumbotron-Adbox"> */}
