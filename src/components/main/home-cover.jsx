@@ -15,7 +15,7 @@ class HomeCover extends Component {
           <br />
           <a
             href="#"
-            class="btn btn-primary btn-lg active"
+            className="btn btn-primary btn-lg active"
             role="button"
             aria-pressed="true"
           >
@@ -24,7 +24,7 @@ class HomeCover extends Component {
           {"    "}
           <a
             href="#"
-            class="btn btn-secondary btn-lg active"
+            className="btn btn-secondary btn-lg active"
             role="button"
             aria-pressed="true"
           >

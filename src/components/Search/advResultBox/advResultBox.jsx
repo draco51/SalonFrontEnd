@@ -17,7 +17,7 @@ class AdvResultBox extends Component {
           <div className="col-sm-3 text-center" style={{ borderRight: 20 }}>
             <img
               src={this.props.propicURL}
-              alt="profile picture"
+              alt="profile"
               className="rounded-circle"
               width="100px"
               height="100px"

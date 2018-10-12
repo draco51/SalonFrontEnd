@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Select, { components } from "react-select";
 import CreatableSelect from "react-select/lib/Creatable";
-import { DropdownMenu, MenuItem } from "react-bootstrap-dropdown-menu";
 
 // const locationOptions = [
 // { value: "1", label: "1" },

@@ -14,6 +14,7 @@ class StatCover extends Component {
                 src="https://image.flaticon.com/icons/svg/12/12195.svg"
                 width="100px"
                 height="100px"
+                alt="BestRated"
               />
               <br />
               <br />
@@ -24,6 +25,7 @@ class StatCover extends Component {
                 src="https://image.flaticon.com/icons/svg/13/13957.svg"
                 width="100px"
                 height="100px"
+                alt="members"
               />
               <br />
               <br />
@@ -35,6 +37,7 @@ class StatCover extends Component {
                 src="https://image.flaticon.com/icons/svg/3/3596.svg"
                 width="100px"
                 height="100px"
+                alt="Jobscompleted"
               />
               <br />
               <br />

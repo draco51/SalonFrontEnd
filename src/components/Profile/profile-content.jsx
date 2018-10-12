@@ -1,16 +1,23 @@
 import React, { Component } from "react";
 import "./profile.css";
 import MaterialIcon, { colorPalette } from "material-icons-react";
-
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Rating from "react-rating"; // freelancer rating rendering element
+import DayPicker, { DateUtils } from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
 class ProfileContent extends Component {
+  constructor(props) {
+    super(props);
+    this.handleDayClick = this.handleDayClick.bind(this);
+  }
   state = {
     skills: [],
     qualification: [],
-    images: []
+    images: [],
+    selectedDays: [],
+    calendar: []
   };
 
   //Fetching props data arrays from parent component user_profile
@@ -18,8 +25,23 @@ class ProfileContent extends Component {
     return {
       skills: nextProps.skillsObj ? nextProps.skillsObj : [],
       qualification: nextProps.qualifcnObj ? nextProps.qualifcnObj : [],
-      images: nextProps.images ? nextProps.images : []
+      images: nextProps.images ? nextProps.images : [],
+      calendar: nextProps.calendar ? nextProps.calendar : []
     };
+  }
+
+  //Handleing calendar functions
+  handleDayClick(day, { selected }) {
+    const { selectedDays } = this.state;
+    if (selected) {
+      const selectedIndex = selectedDays.findIndex(selectedDay =>
+        DateUtils.isSameDay(selectedDay, day)
+      );
+      selectedDays.splice(selectedIndex, 1);
+    } else {
+      selectedDays.push(day);
+    }
+    this.setState({ selectedDays });
   }
 
   render() {
@@ -38,6 +60,7 @@ class ProfileContent extends Component {
         </nav>
         <div className="row">
           <div className="col-md-3 text-center">
+            {/* --------------< Side Bar >-------------- */}
             <div>
               <img
                 alt="Bootstrap Image Preview"
@@ -61,7 +84,7 @@ class ProfileContent extends Component {
             </h6>
             <hr />
             <span className="col-md-3 text-left">
-              <h6>Skills</h6>
+              <h5>Skills</h5>
               {this.state.skills ? (
                 <div>
                   {this.state.skills.map(function(item) {
@@ -74,14 +97,14 @@ class ProfileContent extends Component {
             </span>
             <hr />
             <span className="col-md-3 text-left">
-              <h6>Rate / Budget</h6>
+              <h5>Rate / Budget</h5>
               <div className="alert alert-warning ">
                 $ {this.props.hourlyRate} /hr
               </div>
             </span>
             <hr />
             <span className="col-md-3 text-left">
-              <h6>Qualitification</h6>
+              <h5>Qualitification</h5>
               {this.state.qualification.map(function(item) {
                 return <li key={item.id}>{item.qualification}</li>;
               })}
@@ -96,6 +119,8 @@ class ProfileContent extends Component {
               </a>
             </span>
           </div>
+          {/* --------------< /Side Bar >-------------- */}
+
           <div className="col-md-9">
             <div className="container text-right">
               <Rating
@@ -107,14 +132,10 @@ class ProfileContent extends Component {
             <h2>{this.props.tagline}</h2>
             <p>{this.props.description}</p>
             <hr />
-            <span className="col-md-9 text-left">
-              <h6>Calendar</h6>
-            </span>
 
-            <hr />
             <span className="col-md-9 text-left">
-              <h6>My Portfolio</h6>
-
+              {/* --------------< Carousel >-------------- */}
+              <h5>My Portfolio</h5>
               <Carousel autoPlay="true" emulateTouch="true">
                 {this.state.images.map(function(item) {
                   return (
@@ -125,7 +146,33 @@ class ProfileContent extends Component {
                   );
                 })}
               </Carousel>
-              <hr />
+              {/* --------------< /Carousel >-------------- */}
+
+              {/* --------------< Calendar >-------------- */}
+              <h5>My Calendar</h5>
+              <div className="card text-center" style={{ padding: 20 }}>
+                <h5 class="card-title">Select your dates</h5>
+                <hr />
+                <DayPicker
+                  showOutsideDays
+                  selectedDays={this.state.selectedDays}
+                  onDayClick={this.handleDayClick}
+                  canChangeMonth={false}
+                  disabledDays={[
+                    new Date(2018, 10, 12),
+                    new Date(2017, 10, 13)
+                  ]}
+                />
+                <div class="card-body">
+                  <p class="card-text">
+                    Please contact {this.props.userName} for futher confirmation
+                  </p>
+                  <a href="#" class="btn btn-success">
+                    Continue
+                  </a>
+                </div>
+              </div>
+              {/* --------------< /Calendar >-------------- */}
               <span className="col-md-9 text-left" />
             </span>
           </div>

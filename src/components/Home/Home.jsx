@@ -31,7 +31,7 @@ class Home extends Component {
         <Header />
         <HomeCover subtitle={this.state.subtitle} />
         <StatCover />
-        <hr />
+
         {/* <PrimarySearch getUser={this.getUser} /> */}
         {/* {this.state.repos ? (
           <p>No : {this.state.repos}</p>

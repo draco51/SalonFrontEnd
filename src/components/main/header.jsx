@@ -36,13 +36,15 @@ class Header extends Component {
           <div className="collapse navbar-collapse" id="navbarsExample03">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">
-                  Find Workers <span className="sr-only">(current)</span>
+                <a className="nav-link" href="http://localhost:3000/">
+                  <h5>Find Workers   |</h5>{" "}
+                  <span className="sr-only">(current)</span>
                 </a>
               </li>
               <li className="nav-item active">
-                <a className="nav-link" href="#">
-                  How it works <span className="sr-only">(current)</span>
+                <a className="nav-link" href="http://localhost:3000/">
+                  <h5>How it works   </h5>
+                  <span className="sr-only">(current)</span>
                 </a>
               </li>
             </ul>

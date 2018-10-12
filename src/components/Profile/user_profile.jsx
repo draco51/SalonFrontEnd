@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import Header from "./../main/header";
 import Footer from "./../main/footer";
 import ProfileContent from "./profile-content";
-
 class UserProfile extends Component {
   state = {
     item: [],
     skills: [],
-    pictures: []
+    pictures: [],
+    qualitifications: []
   };
 
   //Fetching freelancer profile data from API
@@ -24,7 +24,6 @@ class UserProfile extends Component {
   }
 
   //Rendering Data
-
   render() {
     console.log(this.state.item);
     const {
@@ -38,14 +37,15 @@ class UserProfile extends Component {
       rating,
       skills,
       qualitifications,
-      pictures
+      pictures,
+      calendar
     } = this.state.item;
 
     return (
       <div>
         <Header />
         <div className="jumbotron bg-white ">
-          <div className="container" style={{ height: 1200 }}>
+          <div className="container">
             <ProfileContent
               key={id}
               userName={name}
@@ -58,6 +58,7 @@ class UserProfile extends Component {
               skillsObj={skills}
               qualifcnObj={qualitifications}
               images={pictures}
+              calendar={calendar}
             />
           </div>
         </div>

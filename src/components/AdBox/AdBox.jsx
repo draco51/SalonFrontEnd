@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./Adbox.css";
-import { AsyncSeriesHook } from "tapable";
-import { FaBeer } from "react-icons/fa";
 import MaterialIcon, { colorPalette } from "material-icons-react";
 
 class AdBox extends Component {
