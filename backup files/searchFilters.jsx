@@ -28,18 +28,18 @@ class SearchFilters extends Component<*, State> {
     };
   }
 
-  // handleChange = (newValue: any, actionMeta: any) => {
-  //   console.group("Value Changed");
-  //   console.log(newValue);
-  //   console.log(`action: ${actionMeta.action}`);
-  //   console.groupEnd();
-  // };
+  handleChange = (newValue: any, actionMeta: any) => {
+    console.group("Value Changed");
+    console.log(newValue);
+    console.log(`action: ${actionMeta.action}`);
+    console.groupEnd();
+  };
 
   render() {
-    // const { selectedOption } = this.state;
+    const { selectedOption } = this.state;
     return (
       <div>
-        {/* <h6>Location : </h6>
+        <h6>Location : </h6>
         <CreatableSelect
           onChange={this.props.handleChangeLocation}
           options={this.state.locationOptions}
@@ -50,18 +50,17 @@ class SearchFilters extends Component<*, State> {
           onChange={this.props.handleChangeRating}
           options={this.state.ratingOptions}
         />
-        <hr /> */}
+        <hr />
         {/* wdwsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssd */}
-        Location
         <form onSubmit={this.props.handleSubmit}>
           <select
-            className="form-control form-control-md"
+            class="form-control form-control-md"
             value={this.state.value}
-            onChange={this.props.handleChange}
+            onChange={this.handleChange}
           >
-            <option>Port Gaetano</option>
-            <option>West Dalton</option>
-            <option>Barrowsland</option>
+            <option>Large select</option>
+            <option>Large wdwdwect</option>
+            <option>Large sedwdwdlect</option>
           </select>
         </form>
         {/* wdwsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssd */}

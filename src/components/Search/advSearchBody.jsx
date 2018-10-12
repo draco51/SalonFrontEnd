@@ -40,14 +40,8 @@ class advSearchBody extends Component {
       });
   }
 
-  //Search term from location input filtering
-  isLocation(event) {
-    return event.term.toString().toLowerCase() == "location" ? true : false;
-  }
-
   HandleLocationChange = event => {
     console.log("Event data = > ", event);
-    console.log(this.isLocation(event));
     var updatedList = this.state.items;
     updatedList = updatedList.filter(function(item) {
       return (
@@ -57,7 +51,7 @@ class advSearchBody extends Component {
           .search(event.label.toString().toLowerCase()) !== -1
       );
     });
-    console.log("Updated list", updatedList);
+    console.log("Updated list : ", updatedList);
     this.setState({ filteredItems: updatedList });
   };
 
