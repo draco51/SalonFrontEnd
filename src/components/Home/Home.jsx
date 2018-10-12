@@ -4,12 +4,10 @@ import Header from "./../main/header";
 import HomeCover from "./../main/home-cover";
 import Footer from "./../main/footer";
 import HomeBody from "./homeBody";
-import PrimarySearch from "./../Search/primarySearch";
+import PrimarySearch from "../Search/primarySearch/primarySearch";
 import StatCover from "./statCover";
 import axios from "axios";
-//api.github.com/users/
-
-import "./Home.css";
+import "./home.css";
 
 class Home extends Component {
   // getUser = e => {
@@ -33,6 +31,7 @@ class Home extends Component {
         <Header />
         <HomeCover subtitle={this.state.subtitle} />
         <StatCover />
+        <hr />
         {/* <PrimarySearch getUser={this.getUser} /> */}
         {/* {this.state.repos ? (
           <p>No : {this.state.repos}</p>

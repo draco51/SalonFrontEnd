@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./AdvResultBox.css";
+import "./advResultBox.css";
 // import Rating from "react-rating"; // freelancer rating rendering element
 import StarRatingComponent from "react-star-rating-component";
 
@@ -37,7 +37,7 @@ class AdvResultBox extends Component {
               value={this.props.rating}
             />
 
-            <div className="display-4">{this.props.Tagline}</div>
+            <div className="display-4">{this.props.tagline}</div>
             <hr />
             <p>{this.props.description}</p>
             <a

@@ -49,13 +49,14 @@ class ProfileContent extends Component {
 
             <h6 className="text-center">
               <MaterialIcon icon="account_circle" size={20} />
+              {"  "}
               {this.props.userName}
             </h6>
 
             <span className="glyphicon glyphicon-envelope" />
             <h6 className="text-center">
               <MaterialIcon icon="location_on" size={20} />
-
+              {"  "}
               {this.props.location}
             </h6>
             <hr />
@@ -84,6 +85,15 @@ class ProfileContent extends Component {
               {this.state.qualification.map(function(item) {
                 return <li key={item.id}>{item.qualification}</li>;
               })}
+              <hr />
+              <a
+                href="#"
+                className="btn btn-primary btn-md btn-block"
+                role="button"
+                aria-pressed="true"
+              >
+                Contact Now
+              </a>
             </span>
           </div>
           <div className="col-md-9">
@@ -116,9 +126,7 @@ class ProfileContent extends Component {
                 })}
               </Carousel>
               <hr />
-              <span className="col-md-9 text-left">
-                <h6>Contact me</h6>
-              </span>
+              <span className="col-md-9 text-left" />
             </span>
           </div>
         </div>

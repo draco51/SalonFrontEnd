@@ -9,7 +9,14 @@ class adSearch extends Component {
     return (
       <div>
         <Header />
+        <br />
         <div className="container">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="#">Home</a>
+            </li>
+            <li className="breadcrumb-item active">Search</li>
+          </ol>
           <AdvSearchBody />
         </div>
         <Footer />

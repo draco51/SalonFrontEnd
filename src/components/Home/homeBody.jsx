@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AdBox from "./../AdBox/AdBox";
-import PrimarySearch from "./../Search/primarySearch";
+import PrimarySearch from "../Search/primarySearch/primarySearch";
 
 class HomeBody extends Component {
   constructor(props) {

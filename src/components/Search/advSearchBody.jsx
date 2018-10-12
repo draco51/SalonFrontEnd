@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AdvResultBox from "./advResultBox";
+import AdvResultBox from "./advResultBox/advResultBox";
 import SearchFilters from "./searchFilters";
 import { func } from "prop-types";
 
@@ -95,7 +95,7 @@ class advSearchBody extends Component {
                   <AdvResultBox
                     key={item.id}
                     userName={item.name}
-                    Tagline={item.profileTitle}
+                    tagline={item.profileTitle}
                     description={item.description}
                     location={item.location}
                     propicURL={item.propicURL}

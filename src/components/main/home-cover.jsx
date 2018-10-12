@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./../Home/Home.css";
-import PrimarySearch from "./../Search/primarySearch";
+import "./../Home/home.css";
+import PrimarySearch from "../Search/primarySearch/primarySearch";
 
 class HomeCover extends Component {
   state = {};
