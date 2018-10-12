@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 import CreatableSelect from "react-select/lib/Creatable";
 
-// const locationOptions = [
-// { value: "1", label: "1" },
-// { value: "2", label: "2" },
-// { value: "3", label: "3" },
-// { value: "4", label: "4" },
-// { value: "5", label: "5" }
-// ];
-
 class SearchFilters extends Component<*, State> {
   constructor(props) {
     super(props);
@@ -17,11 +9,11 @@ class SearchFilters extends Component<*, State> {
     selectedOption: null,
     locationOptions: [],
     ratingOptions: [
-      { value: "1", label: "1" },
-      { value: "2", label: "2" },
-      { value: "3", label: "3" },
-      { value: "4", label: "4" },
-      { value: "5", label: "5" }
+      { value: "1", label: "1", term: "rating" },
+      { value: "2", label: "2", term: "rating" },
+      { value: "3", label: "3", term: "rating" },
+      { value: "4", label: "4", term: "rating" },
+      { value: "5", label: "5", term: "rating" }
     ]
   };
 
@@ -59,6 +51,15 @@ class SearchFilters extends Component<*, State> {
           options={this.state.ratingOptions}
         />
         <hr />
+        {/* wdwsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssd */}
+        <form onSubmit={this.handleSubmit}>
+          <select class="form-control form-control-lg">
+            <option>Large select</option>
+            <option>Large wdwdwect</option>
+            <option>Large sedwdwdlect</option>
+          </select>
+        </form>
+        {/* wdwsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssd */}
       </div>
     );
   }
