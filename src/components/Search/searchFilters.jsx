@@ -8,63 +8,83 @@ class SearchFilters extends Component<*, State> {
   state = {
     selectedOption: null,
     locationOptions: [],
-    ratingOptions: [
-      { value: "1", label: "1", term: "rating" },
-      { value: "2", label: "2", term: "rating" },
-      { value: "3", label: "3", term: "rating" },
-      { value: "4", label: "4", term: "rating" },
-      { value: "5", label: "5", term: "rating" }
-    ]
+    items: []
   };
 
-  //Getting Selection lists from parent advSearchBody
-  static getDerivedStateFromProps(nextProps) {
-    return {
-      locationOptions: nextProps.locationOptions
-        ? nextProps.locationOptions
-        : []
-      //   ,
-      // ratingOptions: nextProps.ratingOptions ? nextProps.ratingOptions : []
-    };
+  componentDidMount() {
+    fetch("http://127.0.0.1:9008/api/stylists")
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          isLoaded: true,
+          items: json
+        });
+      });
+    var locationOptions = this.state.items.map(item => {
+      return { value: item.id, label: item.location };
+    });
+    this.setState({ locationOptions });
+    console.log("list lcoations", this.state.locationOptions);
   }
-
-  // handleChange = (newValue: any, actionMeta: any) => {
-  //   console.group("Value Changed");
-  //   console.log(newValue);
-  //   console.log(`action: ${actionMeta.action}`);
-  //   console.groupEnd();
-  // };
 
   render() {
     // const { selectedOption } = this.state;
     return (
       <div>
-        {/* <h6>Location : </h6>
-        <CreatableSelect
-          onChange={this.props.handleChangeLocation}
-          options={this.state.locationOptions}
-        />
+        <label>
+          <h6>Sort Results</h6>
+        </label>
+        {/* ========User Rating Sorting Button=========== */}
+        <div>
+          <button
+            className="btn btn-outline-primary"
+            onClick={this.props.sortByRating}
+          >
+            {this.props.ratingButtonText}
+          </button>
+        </div>
+        <br />
+        {/* ========User Price Sorting Button=========== */}
+        <div>
+          <button
+            className="btn btn-outline-primary"
+            onClick={this.props.sortByPrice}
+          >
+            {this.props.priceButtonText}
+          </button>
+        </div>
+        <br />
         <hr />
-        <h6>Ratings : </h6>
-        <CreatableSelect
-          onChange={this.props.handleChangeRating}
-          options={this.state.ratingOptions}
-        />
-        <hr /> */}
-        {/* wdwsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssd */}
-        Location
+        {/* Location Selection */}
+        <h6>Location : </h6>
         <form onSubmit={this.props.handleSubmit}>
           <select
             className="form-control form-control-md"
-            value={this.state.value}
-            onChange={this.props.handleChange}
+            value={this.props.value}
+            onChange={this.props.handleChangeLocation}
           >
-            <option>Port Gaetano</option>
-            <option>West Dalton</option>
-            <option>Barrowsland</option>
+            {this.state.items.map(item => (
+              <option key={item.id} value={item.location}>
+                {" "}
+                {item.location}{" "}
+              </option>
+            ))}
           </select>
+          <br />
+          {/* Rating Selection */}
+          <h6>Rating : </h6>
+          <select
+            className="form-control form-control-md"
+            value={this.props.value}
+            onChange={this.props.handleChangeRating}
+          >
+            <option value="3">Above Standard</option>
+            <option value="5">Top rated</option>
+          </select>
+          <br />
+          <input className="btn btn-primary" type="submit" value="Search" />
         </form>
-        {/* wdwsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssd */}
+        {/* //end */}
       </div>
     );
   }

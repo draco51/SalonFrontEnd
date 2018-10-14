@@ -25,8 +25,8 @@ class AdvResultBox extends Component {
             <br />
             <br />
             <p className="lead">
-              <div className="lable">{this.props.userName}</div>
-              <div className="lable">{this.props.location}</div>
+              <label className="lable">{this.props.userName}</label>
+              <label className="lable">{this.props.location}</label>
             </p>
           </div>
           <div className="col-md-9">
