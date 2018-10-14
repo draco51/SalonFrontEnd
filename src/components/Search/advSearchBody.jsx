@@ -3,6 +3,7 @@ import AdvResultBox from "./advResultBox/advResultBox";
 import SearchFilters from "./searchFilters";
 import { func } from "prop-types";
 import MaterialIcon, { colorPalette } from "material-icons-react";
+import SortingTab from "./sortingTab";
 
 class advSearchBody extends Component {
   constructor(props) {
@@ -140,13 +141,18 @@ class advSearchBody extends Component {
               handleChangeLocation={this.filterByLocation}
               handleChangeRating={this.filterByRating}
               handleSubmit={this.getSearchData}
-              sortByRating={this.sortByRating}
-              sortByPrice={this.sortByPrice}
-              ratingButtonText={ratingButtonText}
-              priceButtonText={priceButtonText}
             />
           </div>
           <div className="col-sm-9">
+            <div className="container text-right">
+              <SortingTab
+                sortByRating={this.sortByRating}
+                sortByPrice={this.sortByPrice}
+                ratingButtonText={ratingButtonText}
+                priceButtonText={priceButtonText}
+              />
+              <br />
+            </div>
             {this.state.isLoaded ? (
               <React.Fragment>
                 {this.state.filteredItems.map(item => (
@@ -157,7 +163,7 @@ class advSearchBody extends Component {
                     description={item.description}
                     location={item.location}
                     propicURL={item.propicURL}
-                    hourRate={item.hourRate}
+                    price={item.hourRate}
                     rating={item.rating}
                     profileURL={
                       "http://localhost:3000/users/stylists/" + item.id

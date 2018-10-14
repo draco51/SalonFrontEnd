@@ -32,28 +32,8 @@ class SearchFilters extends Component<*, State> {
     return (
       <div>
         <label>
-          <h6>Sort Results</h6>
+          <h6>Filter results</h6>
         </label>
-        {/* ========User Rating Sorting Button=========== */}
-        <div>
-          <button
-            className="btn btn-outline-primary"
-            onClick={this.props.sortByRating}
-          >
-            {this.props.ratingButtonText}
-          </button>
-        </div>
-        <br />
-        {/* ========User Price Sorting Button=========== */}
-        <div>
-          <button
-            className="btn btn-outline-primary"
-            onClick={this.props.sortByPrice}
-          >
-            {this.props.priceButtonText}
-          </button>
-        </div>
-        <br />
         <hr />
         {/* Location Selection */}
         <h6>Location : </h6>

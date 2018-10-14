@@ -38,7 +38,7 @@ class PrimarySearch extends Component {
                 </div>
               </div>
             </form>
-            <p>{this.props.AlertMsg}</p>
+            <p>{this.props.alertMsg}</p>
           </div>
         </div>
       </div>

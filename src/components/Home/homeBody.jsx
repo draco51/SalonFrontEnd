@@ -74,7 +74,7 @@ class HomeBody extends Component {
             ))}
           </div>
         ) : (
-          <PrimarySearch AlertMsg="No results found" />
+          <p>alertMsg</p>
         )}
       </div>
     );

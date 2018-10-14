@@ -9,12 +9,16 @@ class AdvResultBox extends Component {
   render() {
     return (
       <div
-        className="container border "
-        style={{ marginBottom: 10, backgroundColor: "#e6e6e6" }}
+        className="container"
+        style={{
+          marginBottom: 10,
+          width: 710,
+          backgroundColor: "#e6e6e6"
+        }}
       >
         {/* <div className="jumbotron-Adbox"> */}
         <div className="row">
-          <div className="col-sm-3 text-center" style={{ borderRight: 20 }}>
+          <div className="col-sm-3 text-center">
             <img
               src={this.props.propicURL}
               alt="profile"
@@ -28,6 +32,10 @@ class AdvResultBox extends Component {
               <label className="lable">{this.props.userName}</label>
               <label className="lable">{this.props.location}</label>
             </p>
+            <span className="text-left">
+              $ {this.props.price}
+              /Hr
+            </span>
           </div>
           <div className="col-md-9">
             <StarRatingComponent
