@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import CreatableSelect from "react-select/lib/Creatable";
+import Select from "react-select";
 
-class SearchFilters extends Component {
+class SearchFilters extends Component<*, State> {
   constructor(props) {
     super(props);
   }
@@ -10,8 +11,22 @@ class SearchFilters extends Component {
     locationOptions: [],
     items: [],
     minPrice: 0,
-    maxPrice: 0
+    maxPrice: 0,
+    skillOptions: [
+      { value: "s1", label: "Hair Bleaching" },
+      { value: "s2", label: "Hair Coloring" },
+      { value: "s3", label: "Hair Conditioning" },
+      { value: "s4", label: "Hair Extensions" },
+      { value: "s5", label: "Hair Shaping" }
+    ]
   };
+
+  // handleChange = (newValue: any, actionMeta: any) => {
+  //   console.group("Value Changed");
+  //   console.log(newValue);
+  //   console.log(`action: ${actionMeta.action}`);
+  //   console.groupEnd();
+  // };
 
   componentWillMount() {
     fetch("http://127.0.0.1:9008/api/stylists")
@@ -93,6 +108,14 @@ class SearchFilters extends Component {
               onChange={this.props.setMaxPrice}
             />
           </div>
+          <br />
+          {/*------------------Skills Selection------------------ */}
+          <h6>Skills : </h6>
+          <CreatableSelect
+            isMulti
+            onChange={this.props.handleChangeSkills}
+            options={this.state.skillOptions}
+          />
           <br />
           {/* ----------------------END----------------------------- */}
           <input className="btn btn-primary" type="submit" value="Search" />

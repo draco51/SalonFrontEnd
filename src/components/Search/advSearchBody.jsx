@@ -22,6 +22,7 @@ class advSearchBody extends Component {
     isPriceSorted: true,
     minPrice: 0,
     maxPrice: 1000,
+    skills: [],
     warning: "Loding results.."
   };
 
@@ -117,6 +118,14 @@ class advSearchBody extends Component {
     console.log(this.state.maxPrice);
   }
 
+  //Getting selected skills
+
+  handleChangeSkills = (newValue: any, actionMeta: any) => {
+    console.log("Value Changed", newValue);
+    var selectedSkills = newValue;
+    this.setState({ skills: selectedSkills });
+  };
+
   //Fetch request to get search result from API
   getSearchData(event) {
     this.setState({ isLoaded: false });
@@ -125,9 +134,18 @@ class advSearchBody extends Component {
     const rating = encodeURIComponent(this.state.ratingTerm);
     const minPrice = encodeURIComponent(this.state.minPrice);
     const maxPrice = encodeURIComponent(this.state.maxPrice);
+    var esc = encodeURIComponent;
+    var skillArray = this.state.skills.map(item => {
+      return [item.label];
+    });
+    const skill1 = esc(skillArray[0]);
+    const skill2 = esc(skillArray[1]);
+    const skill3 = esc(skillArray[2]);
+    const skill4 = esc(skillArray[3]);
+    const skill5 = esc(skillArray[4]);
 
     fetch(
-      `http://localhost:9008/search?location=${location}&rating=${rating}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+      `http://localhost:9008/search?location=${location}&rating=${rating}&minPrice=${minPrice}&maxPrice=${maxPrice}&s1=${skill1}&s2=${skill2}&s3=${skill3}&s4=${skill4}&s5=${skill5}`
     )
       .then(res => {
         if (res.ok) {
@@ -167,6 +185,7 @@ class advSearchBody extends Component {
               handleSubmit={this.getSearchData.bind(this)}
               setMinPrice={this.setMinPrice.bind(this)}
               setMaxPrice={this.setMaxPrice.bind(this)}
+              handleChangeSkills={this.handleChangeSkills.bind(this)}
             />
           </div>
           <div className="col-sm-9">
