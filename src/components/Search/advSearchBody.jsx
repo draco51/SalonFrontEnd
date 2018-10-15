@@ -13,6 +13,7 @@ class advSearchBody extends Component {
     this.getSearchData = this.getSearchData.bind(this);
     this.sortByRating = this.sortByRating.bind(this);
     this.sortByPrice = this.sortByPrice.bind(this);
+    this.setMinPrice = this.setMinPrice.bind(this);
     this.isRatingSorted = true;
     this.isPriceSorted = true;
   }
@@ -25,7 +26,9 @@ class advSearchBody extends Component {
     ratingTerm: "1",
     priceTerm: "5",
     isRatingSorted: true,
-    isPriceSorted: true
+    isPriceSorted: true,
+    minPrice: 0,
+    maxPrice: 0
   };
 
   //location Filtering
@@ -105,11 +108,21 @@ class advSearchBody extends Component {
     }
   }
 
+  //Getting min and max prices
+  setMinPrice = event => {
+    console.log("called", event);
+    var min = this.event.target.value;
+    this.setState({ minPrice: min });
+    console.log(this.state.minPrice);
+  };
+  setMaxPrice(e) {
+    this.setState({ maxPrice: this.e.target.value });
+  }
+
   //Fetch request to get search result from API
   getSearchData(event) {
     this.setState({ isLoaded: false });
     event.preventDefault();
-    console.log("hhhhhh", this.state.locationTerm);
     const location = encodeURIComponent(this.state.locationTerm);
     const rating = encodeURIComponent(this.state.ratingTerm);
     const rate = encodeURIComponent(this.state.priceTerm);
@@ -141,6 +154,8 @@ class advSearchBody extends Component {
               handleChangeLocation={this.filterByLocation}
               handleChangeRating={this.filterByRating}
               handleSubmit={this.getSearchData}
+              setMinPrice={this.setMinPrice}
+              setMaxPrice={this.setMaxPrice}
             />
           </div>
           <div className="col-sm-9">

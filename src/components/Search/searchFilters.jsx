@@ -8,7 +8,9 @@ class SearchFilters extends Component<*, State> {
   state = {
     selectedOption: null,
     locationOptions: [],
-    items: []
+    items: [],
+    minPrice: 0,
+    maxPrice0: 0
   };
 
   componentDidMount() {
@@ -28,6 +30,8 @@ class SearchFilters extends Component<*, State> {
   }
 
   render() {
+    const s = this;
+    let { state } = s;
     // const { selectedOption } = this.state;
     return (
       <div>
@@ -35,7 +39,7 @@ class SearchFilters extends Component<*, State> {
           <h6>Filter results</h6>
         </label>
         <hr />
-        {/* Location Selection */}
+        {/*------------------Location Selection ------------------*/}
         <h6>Location : </h6>
         <form onSubmit={this.props.handleSubmit}>
           <select
@@ -51,7 +55,7 @@ class SearchFilters extends Component<*, State> {
             ))}
           </select>
           <br />
-          {/* Rating Selection */}
+          {/*------------------Rating Selection------------------ */}
           <h6>Rating : </h6>
           <select
             className="form-control form-control-md"
@@ -62,7 +66,35 @@ class SearchFilters extends Component<*, State> {
             <option value="5">Top rated</option>
           </select>
           <br />
+          {/*------------------Price range Selection------------------ */}
+          <h6>Price range : </h6>
+          <div className="input-group">
+            <div className="input-group-prepend">
+              <div className="input-group-text">$</div>
+            </div>
+            <input
+              type="input"
+              className="form-control"
+              placeholder="Min"
+              name="minPrice"
+              onChange={this.props.setMinPrice}
+            />
+            <div className="input-group-prepend">
+              {" - "}
+              <div className="input-group-text">$</div>
+            </div>
+            <input
+              type="input"
+              className="form-control"
+              placeholder="Max"
+              name="maxPrice"
+              onChange={this.props.setMaxPrice}
+            />
+          </div>
+          <br />
+          {/* ----------------------END----------------------------- */}
           <input className="btn btn-primary" type="submit" value="Search" />
+          <br />
         </form>
         {/* //end */}
       </div>
