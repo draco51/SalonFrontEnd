@@ -28,7 +28,7 @@ class AdBox extends Component {
             />
             <br />
             <br />
-            <p className="lead">
+            <div className="lead">
               <div className="lable">
                 <MaterialIcon icon="account_circle" />
                  {this.props.userName}
@@ -37,7 +37,7 @@ class AdBox extends Component {
                 <MaterialIcon icon="location_on" />
                  {this.props.location}
               </div>
-            </p>
+            </div>
           </div>
           <div className="col-md-9">
             <div className="display-4">{this.props.Tagline}</div>

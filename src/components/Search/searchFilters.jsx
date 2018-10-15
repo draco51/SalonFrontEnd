@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CreatableSelect from "react-select/lib/Creatable";
 
-class SearchFilters extends Component<*, State> {
+class SearchFilters extends Component {
   constructor(props) {
     super(props);
   }
@@ -10,10 +10,10 @@ class SearchFilters extends Component<*, State> {
     locationOptions: [],
     items: [],
     minPrice: 0,
-    maxPrice0: 0
+    maxPrice: 0
   };
 
-  componentDidMount() {
+  componentWillMount() {
     fetch("http://127.0.0.1:9008/api/stylists")
       .then(res => res.json())
       .then(json => {
@@ -22,17 +22,15 @@ class SearchFilters extends Component<*, State> {
           items: json
         });
       });
+    console.log("item list", this.state.items);
     var locationOptions = this.state.items.map(item => {
       return { value: item.id, label: item.location };
     });
-    this.setState({ locationOptions });
+    this.setState({ locationOptions: locationOptions });
     console.log("list lcoations", this.state.locationOptions);
   }
 
   render() {
-    const s = this;
-    let { state } = s;
-    // const { selectedOption } = this.state;
     return (
       <div>
         <label>
@@ -62,7 +60,7 @@ class SearchFilters extends Component<*, State> {
             value={this.props.value}
             onChange={this.props.handleChangeRating}
           >
-            <option value="3">Above Standard</option>
+            <option value="2">Above Standard</option>
             <option value="5">Top rated</option>
           </select>
           <br />
@@ -73,7 +71,9 @@ class SearchFilters extends Component<*, State> {
               <div className="input-group-text">$</div>
             </div>
             <input
-              type="input"
+              type="number"
+              min="10"
+              step="5"
               className="form-control"
               placeholder="Min"
               name="minPrice"
@@ -84,7 +84,9 @@ class SearchFilters extends Component<*, State> {
               <div className="input-group-text">$</div>
             </div>
             <input
-              type="input"
+              type="number"
+              min="10"
+              step="5"
               className="form-control"
               placeholder="Max"
               name="maxPrice"

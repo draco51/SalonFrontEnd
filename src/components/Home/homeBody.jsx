@@ -10,7 +10,8 @@ class HomeBody extends Component {
       isLoaded: false,
       initialItems: [],
       filteredItems: [],
-      proURL: ""
+      proURL: "",
+      alertMsg: ""
     };
   }
 
@@ -39,7 +40,7 @@ class HomeBody extends Component {
       );
     });
     // console.log(updatedList);
-    this.setState({ filteredItems: updatedList });
+    this.setState({ filteredItems: updatedList, alertMsg: "No results found" });
   };
 
   //Fetching freelancer profiles from API
@@ -59,7 +60,7 @@ class HomeBody extends Component {
     return (
       <div>
         <PrimarySearch HandleChange={this.HandleChange} />
-        {this.state.filteredItems ? (
+        {this.state.filteredItems.length > 0 ? (
           <div>
             {this.state.filteredItems.map(item => (
               <AdBox
@@ -74,7 +75,9 @@ class HomeBody extends Component {
             ))}
           </div>
         ) : (
-          <p>alertMsg</p>
+          <div className="alert alert-dark-sm text-center" role="alert">
+            {this.state.alertMsg}
+          </div>
         )}
       </div>
     );

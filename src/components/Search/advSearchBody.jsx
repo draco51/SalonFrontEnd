@@ -8,18 +8,11 @@ import SortingTab from "./sortingTab";
 class advSearchBody extends Component {
   constructor(props) {
     super(props);
-    this.filterByLocation = this.filterByLocation.bind(this);
-    this.filterByRating = this.filterByRating.bind(this);
-    this.getSearchData = this.getSearchData.bind(this);
-    this.sortByRating = this.sortByRating.bind(this);
-    this.sortByPrice = this.sortByPrice.bind(this);
-    this.setMinPrice = this.setMinPrice.bind(this);
-    this.isRatingSorted = true;
-    this.isPriceSorted = true;
   }
 
   state = {
     isLoaded: false,
+    errMsg: "",
     items: [],
     filtereditems: [],
     locationTerm: "",
@@ -28,7 +21,8 @@ class advSearchBody extends Component {
     isRatingSorted: true,
     isPriceSorted: true,
     minPrice: 0,
-    maxPrice: 0
+    maxPrice: 1000,
+    warning: "Loding results.."
   };
 
   //location Filtering
@@ -109,14 +103,18 @@ class advSearchBody extends Component {
   }
 
   //Getting min and max prices
-  setMinPrice = event => {
-    console.log("called", event);
-    var min = this.event.target.value;
+  setMinPrice(event) {
+    console.log("called");
+    var min = event.target.value;
     this.setState({ minPrice: min });
     console.log(this.state.minPrice);
-  };
-  setMaxPrice(e) {
-    this.setState({ maxPrice: this.e.target.value });
+  }
+
+  setMaxPrice(event) {
+    console.log("called");
+    var max = event.target.value;
+    this.setState({ maxPrice: max });
+    console.log(this.state.maxPrice);
   }
 
   //Fetch request to get search result from API
@@ -125,14 +123,27 @@ class advSearchBody extends Component {
     event.preventDefault();
     const location = encodeURIComponent(this.state.locationTerm);
     const rating = encodeURIComponent(this.state.ratingTerm);
-    const rate = encodeURIComponent(this.state.priceTerm);
-    fetch(`http://localhost:9008/search/${location}/${rating}/${rate}`)
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          isLoaded: true,
-          filteredItems: json
-        });
+    const minPrice = encodeURIComponent(this.state.minPrice);
+    const maxPrice = encodeURIComponent(this.state.maxPrice);
+
+    fetch(
+      `http://localhost:9008/search?location=${location}&rating=${rating}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+    )
+      .then(res => {
+        if (res.ok) {
+          res.json().then(json => {
+            this.setState({
+              isLoaded: true,
+              filteredItems: json
+            });
+          });
+        } else {
+          throw new Error("Something went wrong");
+        }
+      })
+      .catch(error => {
+        alert(error);
+        this.setState({ warning: "No results found" });
       });
     console.log(this.state.filteredItems);
   }
@@ -141,28 +152,28 @@ class advSearchBody extends Component {
   render() {
     // console.log(this.state.locationOptions); //rendering data in console for testing
     const ratingButtonText = this.state.isRatingSorted
-      ? "High rated First"
-      : "Low rated First";
+      ? "Low rated First"
+      : "High rated First";
     const priceButtonText = this.state.isPriceSorted
-      ? "High price First"
-      : "Low price First";
+      ? "Low price First"
+      : "High price First";
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-3 text-center">
             <SearchFilters
-              handleChangeLocation={this.filterByLocation}
-              handleChangeRating={this.filterByRating}
-              handleSubmit={this.getSearchData}
-              setMinPrice={this.setMinPrice}
-              setMaxPrice={this.setMaxPrice}
+              handleChangeLocation={this.filterByLocation.bind(this)}
+              handleChangeRating={this.filterByRating.bind(this)}
+              handleSubmit={this.getSearchData.bind(this)}
+              setMinPrice={this.setMinPrice.bind(this)}
+              setMaxPrice={this.setMaxPrice.bind(this)}
             />
           </div>
           <div className="col-sm-9">
             <div className="container text-right">
               <SortingTab
-                sortByRating={this.sortByRating}
-                sortByPrice={this.sortByPrice}
+                sortByRating={this.sortByRating.bind(this)}
+                sortByPrice={this.sortByPrice.bind(this)}
                 ratingButtonText={ratingButtonText}
                 priceButtonText={priceButtonText}
               />
@@ -170,24 +181,30 @@ class advSearchBody extends Component {
             </div>
             {this.state.isLoaded ? (
               <React.Fragment>
-                {this.state.filteredItems.map(item => (
-                  <AdvResultBox
-                    key={item.id}
-                    userName={item.name}
-                    tagline={item.profileTitle}
-                    description={item.description}
-                    location={item.location}
-                    propicURL={item.propicURL}
-                    price={item.hourRate}
-                    rating={item.rating}
-                    profileURL={
-                      "http://localhost:3000/users/stylists/" + item.id
-                    }
-                  />
-                ))}
+                {this.state.filteredItems.length > 0 ? (
+                  <div>
+                    {this.state.filteredItems.map(item => (
+                      <AdvResultBox
+                        key={item.id}
+                        userName={item.name}
+                        tagline={item.profileTitle}
+                        description={item.description}
+                        location={item.location}
+                        propicURL={item.propicURL}
+                        price={item.hourRate}
+                        rating={item.rating}
+                        profileURL={
+                          "http://localhost:3000/users/stylists/" + item.id
+                        }
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  "No results"
+                )}
               </React.Fragment>
             ) : (
-              <p> Loding results..</p>
+              <p> {this.state.warning}</p>
             )}
           </div>
         </div>
