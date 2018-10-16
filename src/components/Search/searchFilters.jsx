@@ -32,20 +32,30 @@ class SearchFilters extends Component<*, State> {
     fetch("http://127.0.0.1:9008/api/stylists")
       .then(res => res.json())
       .then(json => {
-        this.setState({
-          isLoaded: true,
-          items: json
-        });
+        this.setState({ items: json });
+        var locationOptions = json
+          .map(item => {
+            return { id: item.id, location: item.location };
+          })
+          .filter(value => {
+            return !this[value.location] && (this[value.location] = true);
+          }, Object.create(null));
+        this.setState({ locationOptions });
+        console.log(this.state.locationOptions);
       });
-    console.log("item list", this.state.items);
-    var locationOptions = this.state.items.map(item => {
-      return { value: item.id, label: item.location };
-    });
-    this.setState({ locationOptions: locationOptions });
-    console.log("list lcoations", this.state.locationOptions);
   }
 
+  // loadLocations() {
+  //   console.log("item list", this.state.items);
+  //   var locationOptions = this.state.items.map(item => {
+  //     return [item.location];
+  //   });
+  //   this.setState({ locationOptions });
+  //   console.log("list lcoations", this.state.locationOptions);
+  // }
+
   render() {
+    console.log("rendered");
     return (
       <div>
         <label>

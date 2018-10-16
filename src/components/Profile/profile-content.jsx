@@ -136,16 +136,24 @@ class ProfileContent extends Component {
             <span className="col-md-9 text-left">
               {/* --------------< Carousel >-------------- */}
               <h5>My Portfolio</h5>
-              <Carousel autoPlay="true" emulateTouch="true">
-                {this.state.images.map(function(item) {
-                  return (
-                    <div>
-                      <img key={item.id} src={item.imageURL} />
-                      <p className="legend">{item.description}</p>
-                    </div>
-                  );
-                })}
-              </Carousel>
+              {this.state.images.length > 0 ? (
+                <Carousel autoPlay="true" emulateTouch="true">
+                  {this.state.images.map(function(item) {
+                    return (
+                      <div>
+                        <img key={item.id} src={item.imageURL} />
+                        <p className="legend">{item.description}</p>
+                      </div>
+                    );
+                  })}
+                </Carousel>
+              ) : (
+                <div className="card text-center">
+                  Currently No images to show
+                </div>
+              )}
+              <br />
+
               {/* --------------< /Carousel >-------------- */}
 
               {/* --------------< Calendar >-------------- */}

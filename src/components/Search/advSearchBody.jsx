@@ -39,7 +39,7 @@ class advSearchBody extends Component {
   }
 
   //getting initial result for listing
-  componentDidMount() {
+  componentWillMount() {
     fetch("http://127.0.0.1:9008/api/stylists")
       .then(res => res.json())
       .then(json => {
@@ -145,7 +145,7 @@ class advSearchBody extends Component {
     const skill5 = esc(skillArray[4]);
 
     fetch(
-      `http://localhost:9008/search?location=${location}&rating=${rating}&minPrice=${minPrice}&maxPrice=${maxPrice}&s1=${skill1}&s2=${skill2}&s3=${skill3}&s4=${skill4}&s5=${skill5}`
+      `http://localhost:9008/search?location=${location}&rating=${rating}&minPrice=${minPrice}&maxPrice=${maxPrice}&s[]=${skill1}&s[]=${skill2}&s[]=${skill3}&s[]=${skill4}&s[]=${skill5}`
     )
       .then(res => {
         if (res.ok) {
