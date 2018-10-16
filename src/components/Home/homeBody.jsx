@@ -9,15 +9,10 @@ class HomeBody extends Component {
     this.state = {
       items: [],
       isLoaded: false,
-      initialItems: [],
       filteredItems: [],
       proURL: "",
       alertMsg: ""
     };
-  }
-
-  componentWillMount() {
-    this.setState({ items: this.state.initialItems });
   }
 
   //Search term input filtering
@@ -85,7 +80,7 @@ class HomeBody extends Component {
             {this.state.alertMsg}
           </div>
         )}
-        {this.state.filteredItems.length > 0 ? (
+        {this.state.filteredItems.length ? (
           <p />
         ) : (
           <div className="container">

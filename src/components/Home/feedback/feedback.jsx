@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import RBCarousel from "react-bootstrap-carousel";
+import axios from "axios";
 
 const styles = { height: 400, width: "100%" };
 
@@ -8,9 +9,18 @@ class Feedback extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      autoplay: true
+      autoplay: true,
+      testimonies: []
     };
   }
+
+  componentWillMount() {
+    axios
+      .get(`http://localhost:9008/resource/testimonies`)
+      .then(res => this.setState({ testimonies: res.data }))
+      .catch(err => console.log(err));
+  }
+
   onSelect = (active, direction) => {
     console.log(`active=${active} && direction=${direction}`);
   };
@@ -36,6 +46,7 @@ class Feedback extends Component {
     this.setState({ leftIcon, rightIcon });
   };
   render() {
+    console.log(this.state.testimonies);
     let { leftIcon, rightIcon } = this.state;
     return (
       <div className="container">
@@ -52,50 +63,60 @@ class Feedback extends Component {
               slideshowSpeed={2000}
             >
               {/* -------------------------------------- */}
-              <div
-                style={{
-                  ...styles,
-                  backgroundColor: "#f1f1f1",
-                  paddingTop: 50
-                }}
-              >
+              {this.state.testimonies.map(item => (
                 <div
-                  className="carousel text-center"
+                  key={item.id}
                   style={{
-                    paddingLeft: 40
+                    ...styles,
+                    backgroundColor: "#f1f1f1",
+                    paddingTop: 50
                   }}
                 >
-                  <div className="row">
-                    <div className="col col-lg-3">
-                      <img
-                        src="https://randomuser.me/api/portraits/men/5.jpg"
-                        alt="profile picture"
-                        className="rounded-circle"
-                        width="180px"
-                        height="200px"
-                      />
-                    </div>
+                  <div
+                    className="carousel text-center"
+                    style={{
+                      paddingLeft: 40
+                    }}
+                  >
+                    <div className="row">
+                      <div className="col col-lg-3">
+                        <img
+                          id={item.id}
+                          src={item.imageURL}
+                          alt="profile picture"
+                          className="rounded-circle"
+                          width="180px"
+                          height="200px"
+                        />
+                      </div>
 
-                    <div className="col col-lg-9">
-                      <h4>Fewer mixups means more clients in our chairs!</h4>
-                      <div
-                        className="container"
-                        style={{
-                          paddingLeft: 100,
-                          paddingRight: 100,
-                          paddingTop: 40
-                        }}
-                      >
-                        "We love Setmore here at Salon A! The online booking
-                        feature and text confirmation makes scheduling a
-                        pleasure!! Our clients LOVE it!!"
+                      <div className="col col-lg-9">
+                        <h4>{item.title}</h4>
+                        <div
+                          id={item.id}
+                          className="container"
+                          style={{
+                            paddingLeft: 100,
+                            paddingRight: 100,
+                            paddingTop: 40
+                          }}
+                        >
+                          <i>{item.description}</i>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <div className="carousel-center"> </div>
+                  <div
+                    className="carousel-caption"
+                    id={item.id}
+                    style={{ color: "black" }}
+                  >
+                    {item.name}
+                  </div>
                 </div>
-                <div className="carousel-center"> </div>
-                <div className="carousel-caption">Loren O'Hara</div>
-              </div>
+              ))}
+
               {/* -------------------------------------- */}
             </RBCarousel>
           </Col>
