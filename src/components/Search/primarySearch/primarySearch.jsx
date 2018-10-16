@@ -9,7 +9,6 @@ class PrimarySearch extends Component {
   render() {
     return (
       <div className="container">
-        <br />
         <div className="row justify-content-center">
           <div className="col-12 col-md-10 col-lg-8">
             <form onSubmit={this.props.getUser}>
@@ -24,6 +23,7 @@ class PrimarySearch extends Component {
                     name="userName"
                     placeholder="Search names, topics or keywords"
                     onChange={this.props.HandleChange}
+                    id="searchBox"
                   />
                 </div>
                 {"   "}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AdBox from "./../AdBox/AdBox";
 import PrimarySearch from "../Search/primarySearch/primarySearch";
+import Feedback from "./feedback/feedback";
 
 class HomeBody extends Component {
   constructor(props) {
@@ -59,7 +60,12 @@ class HomeBody extends Component {
   render() {
     return (
       <div>
-        <PrimarySearch HandleChange={this.HandleChange} />
+        <br />
+        <div className="conainer text-center">
+          Find your perfect hair stylist and book them now.
+        </div>
+        <PrimarySearch HandleChange={this.HandleChange} id="primarySearchbox" />
+
         {this.state.filteredItems.length > 0 ? (
           <div>
             {this.state.filteredItems.map(item => (
@@ -79,7 +85,14 @@ class HomeBody extends Component {
             {this.state.alertMsg}
           </div>
         )}
-        <div className="container" />
+        {this.state.filteredItems.length > 0 ? (
+          <p />
+        ) : (
+          <div className="container">
+            {" "}
+            <Feedback />
+          </div>
+        )}
       </div>
     );
   }

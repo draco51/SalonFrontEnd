@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./../Home/home.css";
 import PrimarySearch from "../Search/primarySearch/primarySearch";
+import Feedback from "./../Home/feedback/feedback";
 
 class HomeCover extends Component {
   state = {};
