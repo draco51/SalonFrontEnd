@@ -79,6 +79,7 @@ class HomeBody extends Component {
             {this.state.alertMsg}
           </div>
         )}
+        <div className="container" />
       </div>
     );
   }

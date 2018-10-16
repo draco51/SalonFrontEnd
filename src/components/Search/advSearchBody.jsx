@@ -163,7 +163,7 @@ class advSearchBody extends Component {
         alert(error);
         this.setState({ warning: "No results found" });
       });
-    console.log(this.state.filteredItems);
+    console.log("fetched item from DB", this.state.filteredItems);
   }
 
   //Renderin

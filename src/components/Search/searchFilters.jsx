@@ -41,7 +41,7 @@ class SearchFilters extends Component<*, State> {
             return !this[value.location] && (this[value.location] = true);
           }, Object.create(null));
         this.setState({ locationOptions });
-        console.log(this.state.locationOptions);
+        console.log("Location options list", this.state.locationOptions);
       });
   }
 
@@ -55,7 +55,6 @@ class SearchFilters extends Component<*, State> {
   // }
 
   render() {
-    console.log("rendered");
     return (
       <div>
         <label>
@@ -70,7 +69,7 @@ class SearchFilters extends Component<*, State> {
             value={this.props.value}
             onChange={this.props.handleChangeLocation}
           >
-            {this.state.items.map(item => (
+            {this.state.locationOptions.map(item => (
               <option key={item.id} value={item.location}>
                 {" "}
                 {item.location}{" "}
