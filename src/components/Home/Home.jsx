@@ -8,21 +8,16 @@ import PrimarySearch from "../Search/primarySearch/primarySearch";
 import StatCover from "./statCover";
 import axios from "axios";
 import "./home.css";
+import posed from "react-pose";
+
+const Box = posed.div({
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 }
+});
 
 class Home extends Component {
-  // getUser = e => {
-  //   e.preventDefault();
-  //   const userName = e.target.elements.userName.value;
-  //   axios.get(`https://api.github.com/users/${userName}`).then(res => {
-  //     console.log(res);
-  //     const repos = res.data.public_repos;
-  //     this.setState({ repos });
-  //   });
-  // };
-
   state = {
     subtitle: "The Best Marketplace to Find and Hire Hair Stylist"
-    // repos: null
   };
 
   render() {
@@ -31,13 +26,6 @@ class Home extends Component {
         <Header />
         <HomeCover subtitle={this.state.subtitle} />
         <StatCover />
-
-        {/* <PrimarySearch getUser={this.getUser} /> */}
-        {/* {this.state.repos ? (
-          <p>No : {this.state.repos}</p>
-        ) : (
-          <p>Please enter a user name</p>
-        )} */}
         <HomeBody />
         <Footer />
       </div>

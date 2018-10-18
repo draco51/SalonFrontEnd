@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./main.css";
 import logo from "./../../img/logo.png";
+import MaterialIcon, { colorPalette } from "material-icons-react";
 
 class Header extends Component {
   state = {};
@@ -37,7 +38,15 @@ class Header extends Component {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
                 <a className="nav-link" href="http://localhost:3000/">
-                  <h5>Find Workers   |</h5>{" "}
+                  <h5>
+                    <img
+                      src="http://www.clker.com/cliparts/w/r/Q/0/x/D/search-icon-light-grey-hi.png"
+                      width="17"
+                      height="22"
+                      style={{ paddingBottom: 5 }}
+                    />
+                      Find Workers   |
+                  </h5>{" "}
                   <span className="sr-only">(current)</span>
                 </a>
               </li>

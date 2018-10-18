@@ -62,7 +62,7 @@ class Feedback extends Component {
               onSelect={this.visiableOnSelect}
               slideshowSpeed={2000}
             >
-              {/* -------------------------------------- */}
+              {/* ------------------items rendering-------------------- */}
               {this.state.testimonies.map(item => (
                 <div
                   key={item.id}
@@ -79,7 +79,7 @@ class Feedback extends Component {
                     }}
                   >
                     <div className="row">
-                      <div className="col col-lg-3">
+                      <div className="col col-sm-3 border-right">
                         <img
                           id={item.id}
                           src={item.imageURL}
@@ -90,7 +90,7 @@ class Feedback extends Component {
                         />
                       </div>
 
-                      <div className="col col-lg-9">
+                      <div className="col col-sm-9">
                         <h4>{item.title}</h4>
                         <div
                           id={item.id}
@@ -117,7 +117,7 @@ class Feedback extends Component {
                 </div>
               ))}
 
-              {/* -------------------------------------- */}
+              {/* -------------------/items rendering------------------- */}
             </RBCarousel>
           </Col>
         </Row>

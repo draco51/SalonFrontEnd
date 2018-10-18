@@ -6,6 +6,7 @@ import Adapter from "enzyme-adapter-react-16";
 import { shallow, configure } from "enzyme";
 import PrimarySearch from "./components/Search/primarySearch/primarySearch";
 import HomeBody from "./components/Home/homeBody";
+import Home from "./components/Home/Home";
 Enzyme.configure({ adapter: new Adapter() });
 
 it("renders without crashing", () => {
@@ -30,10 +31,19 @@ describe("Home Page component", () => {
         .exists()
     ).toBe(true);
   });
-  it(" Feedback element should render without throwing an error", () => {
+
+  it(" Header element should render without throwing an error", () => {
     expect(
-      shallow(<HomeBody />)
-        .find("div.container")
+      shallow(<Home />)
+        .find("Header")
+        .exists()
+    ).toBe(true);
+  });
+
+  it(" HomeCover element should render without throwing an error", () => {
+    expect(
+      shallow(<Home />)
+        .find("HomeCover")
         .exists()
     ).toBe(true);
   });
@@ -43,13 +53,21 @@ describe("Home Page component", () => {
   });
 });
 
-//SearchBox component
+//SearchBox component input testing
 describe("Primary search input", () => {
-  it("should respond to button click and evvent change of the search component", () => {
+  // it("should respond to button click and evvent change of the search component", () => {
+  //   const wrapper = shallow(<PrimarySearch />);
+  //   wrapper
+  //     .find("#searchBox")
+  //     .simulate("change", { target: { name: "userName", value: "da" } });
+  //   expect(wrapper.state("userName")).toEqual("da");
+  // });
+
+  it("should trigger onchange and pass value", () => {
     const wrapper = shallow(<PrimarySearch />);
     wrapper
       .find("#searchBox")
-      .simulate("change", { target: { name: "userName", value: "da" } });
-    expect(wrapper.state("userName")).toEqual("da");
+      .simulate("change", { target: { value: "testValue" } });
+    expect(wrapper.state("mirror")).toBe("testValue");
   });
 });

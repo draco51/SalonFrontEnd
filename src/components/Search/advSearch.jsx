@@ -24,5 +24,4 @@ class adSearch extends Component {
     );
   }
 }
-
 export default adSearch;

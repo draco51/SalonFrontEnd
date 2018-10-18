@@ -51,7 +51,7 @@ class HomeBody extends Component {
       });
   }
 
-  //Rendering class
+  //Rendering component
   render() {
     return (
       <div>
