@@ -31,7 +31,7 @@ class PrimarySearch extends Component {
                   <a
                     className="btn btn-lg btn-success"
                     placeholder="Search"
-                    href="http://localhost:3000/Search"
+                    href={process.env.REACT_APP_BASE_URL + "Search"}
                   >
                     Search
                   </a>

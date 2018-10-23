@@ -22,10 +22,10 @@ class Feedback extends Component {
   }
 
   onSelect = (active, direction) => {
-    console.log(`active=${active} && direction=${direction}`);
+    // console.log(`active=${active} && direction=${direction}`);
   };
   visiableOnSelect = active => {
-    console.log(`visiable onSelect active=${active}`);
+    // console.log(`visiable onSelect active=${active}`);
   };
   slideNext = () => {
     this.slider.slideNext();
@@ -46,7 +46,7 @@ class Feedback extends Component {
     this.setState({ leftIcon, rightIcon });
   };
   render() {
-    console.log(this.state.testimonies);
+    // console.log(this.state.testimonies);
     let { leftIcon, rightIcon } = this.state;
     return (
       <div className="container">

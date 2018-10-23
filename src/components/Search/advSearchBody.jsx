@@ -40,7 +40,7 @@ class advSearchBody extends Component {
 
   //getting initial result for listing
   componentWillMount() {
-    fetch("http://127.0.0.1:9008/api/stylists")
+    fetch(`${process.env.REACT_APP_API_URL}api/stylists`)
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -145,7 +145,9 @@ class advSearchBody extends Component {
     const skill5 = esc(skillArray[4]);
 
     fetch(
-      `http://localhost:9008/search?location=${location}&rating=${rating}&minPrice=${minPrice}&maxPrice=${maxPrice}&s[]=${skill1}&s[]=${skill2}&s[]=${skill3}&s[]=${skill4}&s[]=${skill5}`
+      `${
+        process.env.REACT_APP_API_URL
+      }search?location=${location}&rating=${rating}&minPrice=${minPrice}&maxPrice=${maxPrice}&s[]=${skill1}&s[]=${skill2}&s[]=${skill3}&s[]=${skill4}&s[]=${skill5}`
     )
       .then(res => {
         if (res.ok) {
@@ -213,7 +215,9 @@ class advSearchBody extends Component {
                         price={item.hourRate}
                         rating={item.rating}
                         profileURL={
-                          "http://localhost:3000/users/stylists/" + item.id
+                          process.env.REACT_APP_BASE_URL +
+                          "users/stylists/" +
+                          item.id
                         }
                       />
                     ))}

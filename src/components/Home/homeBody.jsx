@@ -35,13 +35,12 @@ class HomeBody extends Component {
           .search(event.target.value.toString().toLowerCase()) !== -1
       );
     });
-    // console.log(updatedList);
     this.setState({ filteredItems: updatedList, alertMsg: "No results found" });
   };
 
   //Fetching freelancer profiles from API
   componentDidMount() {
-    fetch("http://127.0.0.1:9008/api/stylists/")
+    fetch(`${process.env.REACT_APP_API_URL}api/stylists`)
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -71,7 +70,9 @@ class HomeBody extends Component {
                 description={item.description}
                 location={item.location}
                 propicURL={item.propicURL}
-                profileURL={"http://localhost:3000/users/stylists/" + item.id}
+                profileURL={
+                  process.env.REACT_APP_BASE_URL + "users/stylists/" + item.id
+                }
               />
             ))}
           </div>

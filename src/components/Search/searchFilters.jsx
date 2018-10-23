@@ -29,7 +29,7 @@ class SearchFilters extends Component<*, State> {
   // };
 
   componentWillMount() {
-    fetch("http://127.0.0.1:9008/api/stylists")
+    fetch(`${process.env.REACT_APP_API_URL}api/stylists`)
       .then(res => res.json())
       .then(json => {
         this.setState({ items: json });

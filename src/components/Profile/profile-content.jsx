@@ -50,10 +50,10 @@ class ProfileContent extends Component {
         <nav>
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="http://localhost:3000/">Home</a>
+              <a href={process.env.REACT_APP_BASE_URL}>Home</a>
             </li>
             <li className="breadcrumb-item">
-              <a href="http://localhost:3000/search">Users</a>
+              <a href={process.env.REACT_APP_BASE_URL + "Search"}>Users</a>
             </li>
             <li className="breadcrumb-item active">david9494</li>
           </ol>

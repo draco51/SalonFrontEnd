@@ -14,7 +14,7 @@ class Header extends Component {
         >
           <a
             className="navbar-brand"
-            href="http://localhost:3000"
+            href={process.env.REACT_APP_BASE_URL}
             style={{ paddingLeft: 20 }}
           >
             <div className="display-4">
@@ -37,7 +37,10 @@ class Header extends Component {
           <div className="collapse navbar-collapse" id="navbarsExample03">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="http://localhost:3000/">
+                <a
+                  className="nav-link"
+                  href={process.env.REACT_APP_BASE_URL + "search"}
+                >
                   <h5>
                     <img
                       src="http://www.clker.com/cliparts/w/r/Q/0/x/D/search-icon-light-grey-hi.png"
@@ -51,7 +54,7 @@ class Header extends Component {
                 </a>
               </li>
               <li className="nav-item active">
-                <a className="nav-link" href="http://localhost:3000/">
+                <a className="nav-link" href={process.env.REACT_APP_BASE_URL}>
                   <h5>How it works   </h5>
                   <span className="sr-only">(current)</span>
                 </a>

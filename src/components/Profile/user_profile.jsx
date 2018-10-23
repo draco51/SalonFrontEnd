@@ -13,7 +13,7 @@ class UserProfile extends Component {
   //Fetching freelancer profile data from API
   componentDidMount() {
     const encodedValue = encodeURIComponent(this.props.match.params.id);
-    fetch(`http://127.0.0.1:9008/api/stylists/${encodedValue}`)
+    fetch(`${process.env.REACT_APP_API_URL}api/stylists/${encodedValue}`)
       .then(res => res.json())
       .then(json => {
         this.setState({

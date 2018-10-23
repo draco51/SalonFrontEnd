@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Profile from "./components/Profile/user_profile";
 import advSearch from "./components/Search/advSearch";
+require("dotenv").config();
 
 class App extends Component {
   render() {
